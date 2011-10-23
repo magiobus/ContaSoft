@@ -1,0 +1,51 @@
+<div class="movement list">
+  <h2>Movimientos</h2>
+
+  <table class="listing" summary="Movement list">
+   <tr class="header">
+	<th>Movimiento</th>
+	<th>Tipo</th>
+	<th>Cuenta</th>
+	<th>Monto</th>
+        <th>Acciones</th>
+    </tr>
+    <% @movements.each do |movement| %>
+    <tr>
+	<td><%= movement.description %></td>
+	<td><%= movement.movement_type %></td>
+	<td><%= movement.account.name %></td>
+	<td><%= movement.amount %></td>
+	<td class="actions">
+		
+	  <%= link_to("Mostrar", {:action => 'show', :id => movement.id}, :class => 'action show') %>
+	  <%= link_to("Editar", '#', :class => 'action edit') %>
+	  <%= link_to("Borrar", '#', :class => 'action delete') %>
+
+        </td>
+
+    </tr>
+    <% end %>
+
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
