@@ -4,6 +4,11 @@ class MainController < ApplicationController
 
   def list
     @movements = Movement.order("movements.amount ASC")
-  end 
+  end
+
+ 
+ 
+  
+  
 
 end
