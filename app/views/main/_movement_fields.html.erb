@@ -1,0 +1,30 @@
+<table summary="Movement Fields">
+
+	<tr>
+		<th>Descripción</th>
+		<td><%= movement.text_area(:description, :size => '40x3') %></td>
+	</tr>
+
+
+	<tr>
+		<th>Tipo de Movimiento</th>
+		<td><%= movement.radio_button(:movement_type,"Cargo") %>Cargo
+		<%= movement.radio_button(:movement_type,"Abono") %>Abono
+		</td>
+	</tr>
+	
+	
+
+	<tr>
+		<th>Monto</th>
+		<td><%= movement.text_field(:amount) %>
+
+    </tr>
+
+	<tr>
+	     <%= select("movement", "account_id", Account.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Selecciona la Cuenta'}) %>
+	   
+	</tr>
+
+
+</table>

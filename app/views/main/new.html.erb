@@ -1,0 +1,16 @@
+<%= link_to("<< Volver", {:action => 'list'}, :class => 'back-link') %>
+
+
+<div class="new movement">
+	<h1>Nuevo Movimiento</h1>
+	
+	<%= form_for(:movement, :url => {:action => 'create'}) do |movement| %>
+	<%=render (:partial => "movement_fields", :locals => {:movement => movement})%>
+	
+	<div class= "form-buttons">
+		<%= submit_tag("Crear Movimiento") %>
+	</div>
+									
+	<%end%>
+									
+</div>

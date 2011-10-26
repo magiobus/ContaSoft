@@ -1,34 +1,42 @@
 <div class="movement list">
   <h2>Movimientos</h2>
 
+<%= link_to("Nuevo Movimiento", {:action => 'new'}, :class => 'back-link') %>
+
+
   <table class="listing" summary="Movement list">
     <tr class="header">
-	<th>Movimiento</th>
-	<th>Cuenta</th>
-        <th>Cargo</th>
-        <th>Abono</th>
-       
+		<th>Movimiento</th>
+		<th>Cuenta</th>
+    	<th>Cargo</th>
+    	<th>Abono</th>
+    	<th>Acciones</th>
     </tr>
     <% cargos = 0  %>
     <% abonos = 0 %>
     <% @movements.each do |movement| %>
     <tr>
-	<td><%= movement.description %></td>
-	<td><%= movement.account.name %></td>
-	<td>
-	    <% if movement.movement_type == "Cargo" %>
-	      <% cargos = cargos + movement.amount %>
-	      <%= movement.amount %>
+		<td><%= movement.description %></td>
+		<td><%= movement.account.name %></td>
+		<td>
+	    	<% if movement.movement_type == "Cargo" %>
+	      		<% cargos = cargos + movement.amount %>
+	      		<%= movement.amount %>
       	    <% end %>
         </td>
-	<td>
-	    <% if movement.movement_type == "Abono" %>
-	      <% abonos = abonos + movement.amount %>
-	      <%= movement.amount %>
-	    <%end%>
-	</td>
+		<td>
+	    	<% if movement.movement_type == "Abono" %>
+	      		<% abonos = abonos + movement.amount %>
+	      		<%= movement.amount %>
+	    	<%end%>
+		</td>
 
-      
+      	<td class="actions">       
+	     	
+	    <%= link_to("Editar",{:action => 'edit' , :id => movement.id},:class =>'action edit') %>    
+	    <%= link_to("Borrar", {:action => 'delete', :id => movement.id}, :class =>'action delete') %>
+	
+       	</td>
 		
      </tr>
      <% end %>
@@ -49,12 +57,16 @@
       <td></td>	
 
      </tr>
+
+	 
      
 
 
   </table>
 </div>
 
+
+ 
 
 
 
