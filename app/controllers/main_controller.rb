@@ -1,9 +1,15 @@
 class MainController < ApplicationController
+
+respond_to :html,:xls
+
+
   def index
   end
 
   def list
     @movements = Movement.order("movements.amount ASC")
+    
+    
   end
   
   def new
@@ -44,6 +50,8 @@ class MainController < ApplicationController
     redirect_to(:action => 'list')
   end
  
+  
+  
   
   
 
