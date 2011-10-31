@@ -10,6 +10,29 @@ respond_to :html,:xls
     @movements = Movement.order("movements.amount ASC")
     
     
+
+
+
+    respond_with do |format|
+    format.html do
+      render :layout => false
+    end
+    format.xls do
+      rows = Array.new
+
+
+
+      @movements.collect do |movement|
+        rows << {'Descripción' => movement.description,
+                 'Cuenta' => movement.account.name, 
+                 'Monto' => movement.amount,
+   	         'Tipo' => movement.movement_type }                
+      end
+      column_order = ["Descripción", "Cuenta", "Monto","Tipo"]
+      to_excel(rows, column_order, "Movmientos", "Movimientos")
+    end
+    end
+    
   end
   
   def new

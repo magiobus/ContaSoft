@@ -3,7 +3,7 @@ class Movement < ActiveRecord::Base
 	belongs_to :account
 	
   
-
+  
 	
 	validates_presence_of :description, :message => "No Puede estar Vacio"
 	validates_presence_of :movement_type , :message => "No Puede estar  Vacio"
