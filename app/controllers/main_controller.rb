@@ -9,10 +9,12 @@ respond_to :html,:xls
   def list
     @movements = Movement.order("movements.amount ASC")
     
+     if !params[:id].nil?
+        @movements = @movements.where(:account_id => params[:id])
+        puts 'hola'
+     end
     
-
-
-
+    
     respond_with do |format|
     format.html do
       render :layout => false
@@ -22,11 +24,11 @@ respond_to :html,:xls
 
 
 
-      @movements.collect do |movement|
+     @movements.collect do |movement|
         rows << {'Descripción' => movement.description,
                  'Cuenta' => movement.account.name, 
                  'Monto' => movement.amount,
-   	         'Tipo' => movement.movement_type }                
+   	             'Tipo' => movement.movement_type }                
       end
       column_order = ["Descripción", "Cuenta", "Monto","Tipo"]
       to_excel(rows, column_order, "Movmientos", "Movimientos")
@@ -58,7 +60,7 @@ respond_to :html,:xls
       
       @movement = Movement.find(params[:id])
       if @movement.update_attributes(params[:movement])
-      redirect_to(:action => 'list', :id => @movement.id)
+      redirect_to(:action => 'list')
       else
          render('edit')
       end

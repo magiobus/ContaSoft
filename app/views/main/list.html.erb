@@ -65,14 +65,14 @@
 
   </table>
 
- <%= link_to "Excel", "list.xls" %>
+ 
 
-
+<a href = '#' id = "url" > Excel </a>
 
 
  <script type="text/javascript">
 
-  function sumatorias() 
+  function sumatorias() 	
 {
    var abono = 0;
    var cargo = 0;
@@ -81,8 +81,8 @@
    {		
     if ( $(this).is(':visible'))
     {
-      abono +=  isNaN(parseInt($(this).find(".abono").text()))?0:parseInt($(this).find(".abono").text());
-	  cargo +=  isNaN(parseInt($(this).find(".cargo").text()))?0:parseInt($(this).find(".cargo").text());
+      abono +=  isNaN(parseFloat($(this).find(".abono").text()))?0:parseFloat($(this).find(".abono").text());
+	  cargo +=  isNaN(parseFloat($(this).find(".cargo").text()))?0:parseFloat($(this).find(".cargo").text());
 	}
    });
    $('#sumacargos').html(cargo);
@@ -95,7 +95,7 @@
 
 
 
-
+ 
 
 
 
@@ -107,6 +107,8 @@
 	{
 	  $('.data').hide();	
       $('.ac'+$('#movement_account_id').val()).show();
+      
+      
 	} else 
 	  {
 	   $('.data').show();	
@@ -121,6 +123,22 @@
   {
 
   });
+
+
+$('#url').bind('click' , function(){
+	
+	if ($('#movement_account_id').val() != '')
+	  { 
+         window.location = 'list/'+$('#movement_account_id').val()+'.xls'
+	    
+      }
+    else 
+        { 
+	     window.location = 'list'+'.xls'
+	    }
+	
+	
+})
 
 
 
