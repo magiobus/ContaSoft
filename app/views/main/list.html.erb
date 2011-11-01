@@ -1,16 +1,15 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 
-<script type="text/javascript" src="jquery-latest.js"></script>
-<script type="text/javascript" src="jquery.tablesorter.js"></script>
 
 
 <div class="movement list">
   <h2>Movimientos</h2>
-
+<%= select("movement", "account_id", Account.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Todas las Cuentas'}) %>
 <%= link_to("Nuevo Movimiento", {:action => 'new'}, :class => 'back-link') %>
 
 
   <table class="listing" summary="Movement list">
+ 
     <tr class="header">
 	<th>Movimiento</th>
 	<th>Cuenta</th>
@@ -21,16 +20,16 @@
     <% cargos = 0  %>
     <% abonos = 0 %>
     <% @movements.each do |movement| %>
-    <tr>
+    <tr class="data ac<%= movement.account_id %>">
 		<td><%= movement.description %></td>
-		<td><%= movement.account.name %></td>
-		<td>
+		<td> <%= movement.account.name %></td>
+		<td class= "cargo">
 	    	<% if movement.movement_type == "Cargo" %>
 	      		<% cargos = cargos + movement.amount %>
 	      		<%= movement.amount %>
       	    <% end %>
         </td>
-		<td>
+		<td class= "abono">
 	    	<% if movement.movement_type == "Abono" %>
 	      		<% abonos = abonos + movement.amount %>
 	      		<%= movement.amount %>
@@ -52,28 +51,86 @@
      <tr>
       <td> </td>
       <td>TOTAL</td>
-      <td><%= cargos%> </td>
-      <td><%= abonos%> </td>
+      <td id= 'sumacargos'><%= cargos%> </td>
+      <td id= 'sumaabonos'><%= abonos%> </td>
      </tr>
     
      <tr>
       <td></td>	
       <td>BALANCE </td>	
-      <td><%= cargos-abonos%></td>	
+      <td id= 'balance'><%= cargos-abonos%></td>	
       <td></td>	
 
      </tr>
 
-	 
-    </table>
+  </table>
 
  <%= link_to "Excel", "list.xls" %>
 
 
 
+
+ <script type="text/javascript">
+
+  function sumatorias() 
+{
+   var abono = 0;
+   var cargo = 0;
   
+   $(".data").each(function() 
+   {		
+    if ( $(this).is(':visible'))
+    {
+      abono +=  isNaN(parseInt($(this).find(".abono").text()))?0:parseInt($(this).find(".abono").text());
+	  cargo +=  isNaN(parseInt($(this).find(".cargo").text()))?0:parseInt($(this).find(".cargo").text());
+	}
+   });
+   $('#sumacargos').html(cargo);
+   $('#sumaabonos').html(abono);
+   $('#balance').html(cargo-abono);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+ $("#movement_account_id").bind('change', function() 
+{
+	if ($('#movement_account_id').val() != '')
+	{
+	  $('.data').hide();	
+      $('.ac'+$('#movement_account_id').val()).show();
+	} else 
+	  {
+	   $('.data').show();	
+	  }
+	
+    sumatorias();
+});
+
+
+
+  $(document).ready(function() 
+  {
+
+  });
+
+
+
+
+ </script>
+
+
 
 </div>
+
 
 
  
