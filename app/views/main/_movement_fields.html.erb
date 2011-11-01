@@ -24,7 +24,7 @@
     </tr>
 
 	<tr>
-	     <%= select("movement", "account_id", Account.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Selecciona la Cuenta'}) %>
+	<%= select("movement", "account_id", Account.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Selecciona la Cuenta'}) %>
 	   
 	</tr>
 
