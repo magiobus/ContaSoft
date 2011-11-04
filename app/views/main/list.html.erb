@@ -193,10 +193,13 @@
 
               $("#movement_account_id").bind('change', function() {
 			    if ($('#movement_account_id').val() != '') {
+				
 				  $('.data').hide();	
-			      $('.ac'+$('#movement_account_id').val()).show();
+			      $('.ac'+$('#movement_account_id').val()).show(600);
                 } else {
-				    $('.data').show();	
+	                $('.data').show(600);
+					
+					
 				  } sumatorias();
 			  });
 
