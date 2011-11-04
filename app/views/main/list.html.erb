@@ -123,9 +123,10 @@
 					 <%end%>
 					 </td>
       
-				     <td class="actions">       
+				     <td>       
 			           <span class= 'btn info'><%= link_to("Editar",{:action => 'edit' , :id => movement.id},
 			           :style => 'color:#FFFFFF;text-decoration:none;',:class =>'action edit') %></span> 
+			           <p><p/>    
 					   <span class= 'btn danger'> <%= link_to("Borrar", {:action => 'delete', :id => movement.id},
 					   :style => 'color:#FFFFFF;text-decoration:none;',:class =>'action delete') %> </span>
 					</td>
