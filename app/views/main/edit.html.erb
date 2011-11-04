@@ -17,18 +17,14 @@
      <div class="content">
       <div class="page-header">
         <h1>Editar Movimiento</h1>
+        <h1> <%= submit_tag("Actualizar Movimiento") %></h1>
       </div>
         <div class="row">
-	
-  <%=render (:partial => "movement_fields", :locals => {:movement => movement})%>
-  <div class= " ">
-	
-  <span class='default'><%= submit_tag("Actualizar Movimiento") %> </span>
-</div>
-    <%end%>
-  </div>
+	    <%=render (:partial => "movement_fields", :locals => {:movement => movement})%>
+	    <%end%>
+        </div>
 
-</div>
+    </div>
           
         
      

@@ -16,14 +16,11 @@
      <div class="content">
       <div class="page-header">
         <h1>Editar Movimiento</h1>
+        <h1 ><%= submit_tag("Crear Movimiento") %></h1>
       </div>
         <div class="row">
   <%=render (:partial => "movement_fields", :locals => {:movement => movement})%>
-	
-	<div class= "form-buttons">
-		<%= submit_tag("Crear Movimiento") %>
-	</div>
-									
+										
 	<%end%>
 									
 </div>
