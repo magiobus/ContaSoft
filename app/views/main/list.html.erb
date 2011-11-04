@@ -98,7 +98,7 @@
 				   <th>Cuenta</th>
 				   <th>Cargo</th>
 			   	   <th>Abono</th>
-			       <th>Acciones</th>
+			       <th colspan="2">Acciones</th>
 				 </tr>
 
 				 <% cargos = 0  %>
@@ -126,7 +126,8 @@
 				     <td>       
 			           <span class= 'btn info'><%= link_to("Editar",{:action => 'edit' , :id => movement.id},
 			           :style => 'color:#FFFFFF;text-decoration:none;',:class =>'action edit') %></span> 
-			           <p><p/>    
+			         </td>
+			         <td>
 					   <span class= 'btn danger'> <%= link_to("Borrar", {:action => 'delete', :id => movement.id},
 					   :style => 'color:#FFFFFF;text-decoration:none;',:class =>'action delete') %> </span>
 					</td>
@@ -139,17 +140,17 @@
 				 <tr>  
 				   <td> </td>
 				   <td><strong>TOTAL</strong></td>
-				   <td id= 'sumacargos'></td>
+				   <td id= 'sumacargos'></td>   
 			       <td id= 'sumaabonos'></td>
-			       <td></td>
+			       <td ></td><td ></td>
 				 </tr>
 
 				 <tr> 
 				    <td></td>	
 				    <td><strong>BALANCE</strong></td>	
 				    <td id = 'balancepos'></td>
-				    <td id = 'balanceneg'></td>
-				    <td></td>
+				    <td id = 'balanceneg'></td>    
+				      <td ></td><td ></td>
 				 </tr>
 
 			   </table>
@@ -157,7 +158,7 @@
 
 
 
-			   <a href = '#' id = "url" class= "btn success" > Descargar xml </a>
+			   <a href = '#' id = "url" class= "btn success" > Descargar XLS </a>
 			
 			
 			
@@ -173,9 +174,11 @@
 				    cargo +=  isNaN(parseFloat($(this).find(".cargo").text()))?0:parseFloat($(this).find(".cargo").text());
 			      }
 			    });
+			      
 			      $('#sumacargos').html(cargo);
 			      $('#sumaabonos').html(abono);
 			      
+			     
 			      balance = cargo-abono;
 			      if(balance < 0){
                     $('#balanceneg').html(balance);				
@@ -195,9 +198,9 @@
 			    if ($('#movement_account_id').val() != '') {
 				
 				  $('.data').hide();	
-			      $('.ac'+$('#movement_account_id').val()).show(600);
+			      $('.ac'+$('#movement_account_id').val()).show(1000);
                 } else {
-	                $('.data').show(600);
+	                $('.data').show(1000);
 					
 					
 				  } sumatorias();
@@ -214,6 +217,7 @@
 				     window.location = 'list'+'.xls'
 				   }
                })
+
 
               
 

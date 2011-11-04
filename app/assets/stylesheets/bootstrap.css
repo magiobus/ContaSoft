@@ -62,13 +62,6 @@ tfoot,
 thead,
 tr,
 th,
-
-
-
-
-
-
-
 td {
   margin: 0;
   padding: 0;
@@ -2373,3 +2366,15 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   -moz-box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
   box-shadow: 0 1px 4px rgba(0, 105, 214, 0.25);
 }
+
+#balanceneg {
+	color: #f00;
+	font-weight: bold;
+}
+
+#balancepos {
+	color: #0f0;
+	font-weight: bold;
+}
+
+
