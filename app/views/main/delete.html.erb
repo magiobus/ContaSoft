@@ -1,19 +1,18 @@
-<%= link_to("<< Volver", {:action => 'list'}, :class => 'back-link') %>
+<span class= 'btn default'><%= link_to("<< Volver", {:action => 'list'}, :class => 'back-link',:style => 'color:#000000;text-decoration:none;') %></span>
+<div class="delete movement">
+  <%= form_for(:movement,:url => {:action => 'destroy',:id => @movement.id}) do |movement| %>
+<p>estas seguro que quieres borrar</p>
+  <div class= "form-buttons">
+    <%= submit_tag("Borrar Movimiento") %>
+  </div>
+<% end %>
 
-<div class = "Borrar Movimiento">
-     <h1>Borrar Movimiento</h1>
-     <%= form_for(:movement,:url => {:action => 'destroy',:id => @movement.id}) do |movement| %>
-     
-     <p> Estas seguro de que quieres borrar este movimiento? </p>
 
 
-	
 
-	<div class= "form-buttons">
-	<%= submit_tag("Borrar Movimiento") %>
-	</div>
-
-	<% end %>
+  
+  
+  
 
 
 

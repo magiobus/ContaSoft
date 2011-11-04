@@ -1,6 +1,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 <%= stylesheet_link_tag "bootstrap" %>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,6 +82,10 @@
       </div>
         <div class="row">
           <div class="span10">
+	
+	
+	
+	
             <h2></h2> <!-- /div tabla -->
               <div class="movement list">
 			     <%= select("movement", "account_id", Account.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Todas las Cuentas'}) %>
@@ -150,7 +156,10 @@
 
 
 
-			   <a href = '#' id = "url" > Excel </a>
+			   <a href = '#' id = "url" class= "btn success" > Descargar xml </a>
+			
+			
+			
 			<script type="text/javascript">
 
 			  function sumatorias() {
@@ -202,12 +211,14 @@
 				   }
                })
 
+              
+
             </script>   
 			
 			
 			
 			
-            </div>
+</div>
           
         </div>
       </div>

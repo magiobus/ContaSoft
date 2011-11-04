@@ -1,6 +1,7 @@
 <% if object && object.errors.size > 0 %>
-	<div id="errorExplanation">
+	<div class="alert-message warning fade in" data-alert="alert">
 		<h2><%= pluralize(object.errors.size, "error")%>  </h2>
+		<a class="close" href="#">&times;</a>
 		<p>Hay Problemas con los siguientes campos:</p>
 		<ul>
 			<% object.errors.full_messages.each do |msg| %>
@@ -9,3 +10,5 @@
 				</ul>
 				</div>
 				<% end %>
+				
+				

@@ -632,6 +632,7 @@ label {
   color: #404040;
 }
 form .input {
+
   margin-left: 150px;
 }
 input[type=checkbox], input[type=radio] {
@@ -677,6 +678,7 @@ input[type=file] {
 input[type=button], input[type=reset], input[type=submit] {
   width: auto;
   height: auto;
+
 }
 select, input[type=file] {
   height: 27px;
@@ -1093,21 +1095,22 @@ textarea[readonly] {
 table {
   width: 100%;
   margin-bottom: 18px;
-  padding: 0;
+  margin-top: 18px;
+  padding: 2.5;
   border-collapse: separate;
   *border-collapse: collapse;
   /* IE7, collapse table to remove spacing */
 
-  font-size: 13px;
+  font-size: 17px;
   border: 1px solid #ddd;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 15px;
 }
 table th, table td {
   padding: 10px 10px 9px;
   line-height: 18px;
-  text-align: left;
+  text-align: center;
 }
 table th {
   padding-top: 9px;

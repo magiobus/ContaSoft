@@ -11,7 +11,6 @@ respond_to :html,:xls
     
      if !params[:id].nil?
         @movements = @movements.where(:account_id => params[:id])
-        puts 'hola'
      end
     
     
