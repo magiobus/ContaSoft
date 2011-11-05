@@ -1,6 +1,16 @@
 class MainController < ApplicationController
 
 respond_to :html,:xls
+before_filter :load
+
+def load
+  @movements = Movement.all
+  @movements = Movement.new
+end
+
+
+
+
 
 
   def index
@@ -20,17 +30,41 @@ respond_to :html,:xls
     end
     format.xls do
       rows = Array.new
+      cargo = 0
+      abono = 0
+      
+      
+      
 
 
 
      @movements.collect do |movement|
-        rows << {'Descripción' => movement.description,
-                 'Cuenta' => movement.account.name, 
-                 'Monto' => movement.amount,
-   	             'Tipo' => movement.movement_type }                
+       
+      if movement.movement_type == "Cargo"
+        cargo = movement.amount
+        else
+        cargo = ''
       end
-      column_order = ["Descripción", "Cuenta", "Monto","Tipo"]
-      to_excel(rows, column_order, "Movmientos", "Movimientos")
+      
+       if movement.movement_type == "Abono"
+          abono = movement.amount
+          else
+          abono = ''
+        end
+      
+        
+        
+        
+        rows << {'Descripción' => movement.description,
+                 'Cuenta' => movement.account.name,
+                 'Cargo' => cargo, 
+                 'Abono' => abono,
+                 'monto' => movement.amount,
+                 'tipo' => movement.movement_type
+   	             }                
+      end
+      column_order = ["Descripción", "Cuenta", "Cargo","Abono","monto","tipo"]
+      to_excel(rows, column_order,cargo,abono, "Movmientos", "Movimientos")
     end
     end
     
@@ -44,6 +78,7 @@ respond_to :html,:xls
   @movement = Movement.new(params[:movement])
   @movement.save
   if @movement.save
+       flash[:notice] = "Successfully created post."
       redirect_to(:action => 'list')
   else
     render('new')
@@ -59,7 +94,9 @@ respond_to :html,:xls
       
       @movement = Movement.find(params[:id])
       if @movement.update_attributes(params[:movement])
-      redirect_to(:action => 'list')
+        flash[:notice] = "Successfully updated post."
+        redirect_to(:action => 'list')
+      
       else
          render('edit')
       end
@@ -71,6 +108,7 @@ respond_to :html,:xls
   
   def destroy
     @movement = Movement.find(params[:id]).destroy
+     flash[:notice] = "Successfully Destroyed post."
     redirect_to(:action => 'list')
   end
  

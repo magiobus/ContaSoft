@@ -184,7 +184,7 @@
                     $('#balanceneg').html(balance);				
 			      } else {
 				 $('#balanceneg').html('');
-				    }
+				    }	
 				 
 				  if(balance > 0){
 				  $('#balancepos').html(balance);
@@ -198,9 +198,10 @@
 			    if ($('#movement_account_id').val() != '') {
 				
 				  $('.data').hide();	
-			      $('.ac'+$('#movement_account_id').val()).show(1000);
+			      $('.ac'+$('#movement_account_id').val()).show(600);
                 } else {
-	                $('.data').show(1000);
+	                $('.data').show(600);
+	
 					
 					
 				  } sumatorias();

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def to_excel(rows, column_order, sheetname, filename)
+  def to_excel(rows, column_order,cargo,abono, sheetname, filename)
     book = Spreadsheet::Workbook.new
     sheet1 = book.create_worksheet :name => sheetname
     header_format = Spreadsheet::Format.new :color => :black, :weight => :bold
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
         sheet1.row(rownum).push row[column].nil? ? 'N/A' : row[column]
       end
     end
+    rowactual = sheet1.row(rownum+2)
+      rowactual.push '','TOTAL'
+    rowactual = sheet1.row(rownum+3)
+      rowactual.push '','BALANCE'
     t = Time.now
     filename = "#{filename}_#{t.strftime("%Y%m%d%H%M%S")}"
     book.write "tmp/#{filename}.xls"
