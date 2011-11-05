@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def to_excel(rows, column_order,cargo,abono, sheetname, filename)
+  def to_excel(rows, column_order,cargo,abono,sumacargos,sumaabonos, sheetname, filename)
     book = Spreadsheet::Workbook.new
     sheet1 = book.create_worksheet :name => sheetname
     header_format = Spreadsheet::Format.new :color => :black, :weight => :bold
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       end
     end
     rowactual = sheet1.row(rownum+2)
-      rowactual.push '','TOTAL'
+      rowactual.push '','TOTAL',sumacargos,sumaabonos
     rowactual = sheet1.row(rownum+3)
       rowactual.push '','BALANCE'
     t = Time.now

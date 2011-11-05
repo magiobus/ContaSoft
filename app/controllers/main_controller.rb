@@ -32,6 +32,9 @@ end
       rows = Array.new
       cargo = 0
       abono = 0
+      sumacargos = 0
+      sumaabonos = 0
+      
       
       
       
@@ -42,15 +45,21 @@ end
        
       if movement.movement_type == "Cargo"
         cargo = movement.amount
+        sumacargos += cargo
         else
         cargo = ''
       end
       
        if movement.movement_type == "Abono"
-          abono = movement.amount
+       abono = movement.amount
+          sumaabonos +=  abono 
           else
           abono = ''
         end
+        
+       
+        
+        
       
         
         
@@ -64,7 +73,7 @@ end
    	             }                
       end
       column_order = ["Descripción", "Cuenta", "Cargo","Abono","monto","tipo"]
-      to_excel(rows, column_order,cargo,abono, "Movmientos", "Movimientos")
+      to_excel(rows, column_order,cargo,abono,sumacargos,sumaabonos, "Movmientos", "Movimientos")
     end
     end
     
