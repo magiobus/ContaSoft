@@ -34,14 +34,11 @@ end
       abono = 0
       sumacargos = 0
       sumaabonos = 0
+      balancepos = 0
+      balanceneg = 0
       
       
-      
-      
-
-
-
-     @movements.collect do |movement|
+      @movements.collect do |movement|
        
       if movement.movement_type == "Cargo"
         cargo = movement.amount
@@ -51,29 +48,36 @@ end
       end
       
        if movement.movement_type == "Abono"
-       abono = movement.amount
+          abono = movement.amount
           sumaabonos +=  abono 
           else
           abono = ''
         end
         
+        if (sumacargos-sumaabonos) > 0 
+          balancepos = sumacargos-sumaabonos
+        else 
+          balancepos = ''
+        end  
+         
+         if (sumacargos-sumaabonos) < 0 
+           balanceneg = sumacargos-sumaabonos
+         else 
+           balanceneg = ''
+         end
+        
        
         
+       
         
-      
-        
-        
-        
-        rows << {'Descripción' => movement.description,
+       rows << {'Descripción' => movement.description,
                  'Cuenta' => movement.account.name,
                  'Cargo' => cargo, 
-                 'Abono' => abono,
-                 'monto' => movement.amount,
-                 'tipo' => movement.movement_type
-   	             }                
+                 'Abono' => abono
+                  }                
       end
-      column_order = ["Descripción", "Cuenta", "Cargo","Abono","monto","tipo"]
-      to_excel(rows, column_order,cargo,abono,sumacargos,sumaabonos, "Movmientos", "Movimientos")
+      column_order = ["Descripción", "Cuenta", "Cargo","Abono"]
+      to_excel(rows, column_order,cargo,abono,sumacargos,sumaabonos,balancepos,balanceneg, "Movmientos", "Movimientos")
     end
     end
     
