@@ -116,7 +116,7 @@ end
  end
   
   def delete
-    @movement = Movement.find(params[:id])
+    
   end
   
   def destroy

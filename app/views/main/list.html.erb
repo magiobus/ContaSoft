@@ -1,5 +1,6 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<script src="app/assets/javascripts/jquery.min.js" type="text/javascript"></script>
 <%= stylesheet_link_tag "bootstrap" %>
+<%= javascript_include_tag "jquery.min" %>
 
 
 
@@ -128,7 +129,7 @@
 			           :style => 'color:#FFFFFF;text-decoration:none;',:class =>'action edit') %></span> 
 			         </td>
 			         <td>
-					   <span class= 'btn danger'> <%= link_to("Borrar", {:action => 'delete', :id => movement.id},
+					   <span class= 'btn danger'> <%= link_to("Borrar", {:action => 'destroy', :id => movement.id},
 					   :style => 'color:#FFFFFF;text-decoration:none;',:class =>'action delete') %> </span>
 					</td>
                    
