@@ -172,12 +172,16 @@
                 $(".data").each(function() {		
 			      if ( $(this).is(':visible')){
 			        abono +=  isNaN(parseFloat($(this).find(".abono").text()))?0:parseFloat($(this).find(".abono").text());
-				    cargo +=  isNaN(parseFloat($(this).find(".cargo").text()))?0:parseFloat($(this).find(".cargo").text());
+					cargo +=  isNaN(parseFloat($(this).find(".cargo").text()))?0:parseFloat($(this).find(".cargo").text());
+				    
+				  
 			      }
 			    });
 			      
 			      $('#sumacargos').html(cargo);
 			      $('#sumaabonos').html(abono);
+				
+					
 			      
 			     
 			      balance = cargo-abono;
@@ -192,6 +196,9 @@
 				  } else {
 				  $('#balancepos').html('');	
 				    }
+				
+				
+				
 			      
               }   
 

@@ -90,6 +90,7 @@ end
 
   def create
   @movement = Movement.new(params[:movement])
+  
   @movement.save
   if @movement.save
        flash[:notice] = "Successfully created post."
