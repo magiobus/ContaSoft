@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def to_excel(rows, column_order,cargo,abono,sumacargos,sumaabonos,balancepos,balanceneg,sheetname, filename)
     book = Spreadsheet::Workbook.new
-    sheet1 = book.create_worksheet :name => sheetname
+    sheet1 = book.create_worksheet :name => sheetname, :border =>2
     header_format = Spreadsheet::Format.new :color => :black, :weight => :bold
     verde = Spreadsheet::Format.new :color => :green, :weight => :bold
     rojo = Spreadsheet::Format.new :color => :red, :weight => :bold

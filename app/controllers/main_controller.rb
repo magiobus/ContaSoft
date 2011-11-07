@@ -42,26 +42,33 @@ end
        
       if movement.movement_type == "Cargo"
         cargo = movement.amount
+        cargo = (cargo*100).round / 100.0
         sumacargos += cargo
+        sumacargos = (sumacargos*100).round / 100.0
         else
         cargo = ''
       end
       
        if movement.movement_type == "Abono"
           abono = movement.amount
+          abono = (abono*100).round / 100.0
           sumaabonos +=  abono 
+          sumaabonos = (sumaabonos*100).round / 100.0
           else
           abono = ''
         end
         
         if (sumacargos-sumaabonos) > 0 
           balancepos = sumacargos-sumaabonos
+          balancepos = (balancepos*100).round / 100.0
+          
         else 
           balancepos = ''
         end  
          
          if (sumacargos-sumaabonos) < 0 
            balanceneg = sumacargos-sumaabonos
+           balanceneg = (balanceneg*100).round / 100.0
          else 
            balanceneg = ''
          end
