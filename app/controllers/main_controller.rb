@@ -73,10 +73,11 @@ end
        rows << {'Descripción' => movement.description,
                  'Cuenta' => movement.account.name,
                  'Cargo' => cargo, 
-                 'Abono' => abono
+                 'Abono' => abono,
+                 'creacion' => movement.created_at
                   }                
       end
-      column_order = ["Descripción", "Cuenta", "Cargo","Abono"]
+      column_order = ["Descripción", "Cuenta", "Cargo","Abono",'creacion']
       to_excel(rows, column_order,cargo,abono,sumacargos,sumaabonos,balancepos,balanceneg, "Movmientos", "Movimientos")
     end
     end
