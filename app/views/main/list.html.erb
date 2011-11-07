@@ -172,20 +172,21 @@
                 $(".data").each(function() {		
 			      if ( $(this).is(':visible')){
 			        abono +=  isNaN(parseFloat($(this).find(".abono").text()))?0:parseFloat($(this).find(".abono").text());
-					cargo +=  isNaN(parseFloat($(this).find(".cargo").text()))?0:parseFloat($(this).find(".cargo").text());
-				    
-				  
-			      }
+		            cargo +=  isNaN(parseFloat($(this).find(".cargo").text()))?0:parseFloat($(this).find(".cargo").text());
+					
+					abono = Math.round(abono*100)/100;
+					cargo = Math.round(cargo*100)/100; //redondeos de abono y cargo
+				}                        
 			    });
 			      
 			      $('#sumacargos').html(cargo);
 			      $('#sumaabonos').html(abono);
 				
-					
-			      
-			     
-			      balance = cargo-abono;
+				  balance = parseFloat(cargo-abono);
+				  balance = Math.round(balance*100)/100; // redondeo de balance
+				  
 			      if(balance < 0){
+				
                     $('#balanceneg').html(balance);				
 			      } else {
 				 $('#balanceneg').html('');
@@ -196,11 +197,7 @@
 				  } else {
 				  $('#balancepos').html('');	
 				    }
-				
-				
-				
-			      
-              }   
+			  }   
 
               $("#movement_account_id").bind('change', function() {
 			    if ($('#movement_account_id').val() != '') {
