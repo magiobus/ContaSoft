@@ -81,7 +81,12 @@
 			     <div class="alert-message warning fade in" data-alert="alert" >
 			     <a class="close" href="#">&times;</a>
 				 <p id = 'alerta'><strong><%= flash[ :notice ] %>  </strong> </p>
-					
+				<script>
+				var t=setTimeout('ocultar()',2000);
+				function ocultar(){
+				  $('.alert-message').fadeTo("slow", 0.0); 
+			    }
+				</script>	
 				</div>
 				<%end%>
         </div>
@@ -224,17 +229,16 @@
                 } else {
 	                $('.data').show(600);
 	
-					
-					
-				  } sumatorias();
+					} sumatorias(); 
 			  });
+			
+			    	
 
                $(document).ready(function() { 
 	           
 			   sumatorias();
 			   
-			   
-	           });
+			   });
 	
 
                $('#url').bind('click' , function() {
@@ -245,14 +249,7 @@
 				   }
                })
 
- function alertas(){
-	 var t=setTimeout("mostrar()",3000);
-	function mostrar(){
-	$('#alert').show
-	}
-	
-	
-}
+
            
           
 

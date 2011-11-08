@@ -1,0 +1,9 @@
+es:
+  activerecord:
+    attributes:
+      movement:
+        description: "Descripción"
+        movement_type: "Tipo de Movimiento"
+        account_id: "Cuenta"
+        amount: "Monto"
+      
