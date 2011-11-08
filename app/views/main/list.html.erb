@@ -1,11 +1,14 @@
 <script src="app/assets/javascripts/jquery.min.js" type="text/javascript"></script>
 <%= stylesheet_link_tag "bootstrap" %>
 <%= javascript_include_tag "jquery.min" %>
+<%= javascript_include_tag "bootstrap-alerts" %>
+<%= javascript_include_tag "bootstrap-twipsy" %>
+<%= javascript_include_tag "bootstrap-popover" %>
 
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <title>ContaSoft by Magio</title>
@@ -44,6 +47,7 @@
         background-color: #f5f5f5;
         padding: 20px 20px 10px;
         margin: -20px -20px 20px;
+			
       }
 
       /* Styles you shouldn't keep as they are for displaying this base example only */
@@ -72,6 +76,14 @@
       <div class="fill">
         <div class="container">
           <a class="brand" href=" ">ContaSoft</a>
+        
+			  	<% if flash[ :notice ] %> 
+			     <div class="alert-message warning fade in" data-alert="alert" >
+			     <a class="close" href="#">&times;</a>
+				 <p id = 'alerta'><strong><%= flash[ :notice ] %>  </strong> </p>
+					
+				</div>
+				<%end%>
         </div>
       </div>
     </div>
@@ -157,11 +169,16 @@
 			   </table>
 
 
-
-
-			   <a href = '#' id = "url" class= "btn success" > Descargar XLS </a>
+			   <a href = '#' id = "url" class= "btn success" rel="popover" title="Exportar XLS" data-content="Pulsa Aqui para exportar tu busqueda a una hoja de Calculo" > Descargar XLS </a>
 			
 			
+			
+			  
+			          
+	
+			
+			
+					
 			
 			<script type="text/javascript">
 
@@ -213,8 +230,12 @@
 			  });
 
                $(document).ready(function() { 
-	             sumatorias();
+	           
+			   sumatorias();
+			   
+			   
 	           });
+	
 
                $('#url').bind('click' , function() {
                  if ($('#movement_account_id').val() != '') { 
@@ -223,6 +244,17 @@
 				     window.location = 'list'+'.xls'
 				   }
                })
+
+ function alertas(){
+	 var t=setTimeout("mostrar()",3000);
+	function mostrar(){
+	$('#alert').show
+	}
+	
+	
+}
+           
+          
 
 
               

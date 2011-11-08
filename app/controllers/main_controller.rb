@@ -1,5 +1,6 @@
 class MainController < ApplicationController
 
+
 respond_to :html,:xls
 before_filter :load
 
@@ -100,7 +101,7 @@ end
   
   @movement.save
   if @movement.save
-       flash[:notice] = "Successfully created post."
+       flash[:notice] = "Movimiento Creado"
       redirect_to(:action => 'list')
   else
     render('new')
@@ -116,13 +117,13 @@ end
       
       @movement = Movement.find(params[:id])
       if @movement.update_attributes(params[:movement])
-        flash[:notice] = "Successfully updated post."
+        flash[:notice] = "Movimiento Actualizado"
         redirect_to(:action => 'list')
       
       else
          render('edit')
       end
- end
+  end
   
   def delete
     
@@ -130,7 +131,7 @@ end
   
   def destroy
     @movement = Movement.find(params[:id]).destroy
-     flash[:notice] = "Successfully Destroyed post."
+     flash[:notice] = "Movimiento Borrado"
     redirect_to(:action => 'list')
   end
  
